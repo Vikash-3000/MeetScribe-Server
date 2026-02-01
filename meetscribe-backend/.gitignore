@@ -1,8 +1,21 @@
-HELP.md
+### Maven ###
 target/
-.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Environment / Secrets ###
+.env
+application-*.yml
+application-*.yaml
+!application.yml.example
+
+### Logs ###
+*.log
+logs/
+
+### Docker volumes ###
+postgres_data/
+docker-data/
 
 ### STS ###
 .apt_generated
@@ -31,4 +44,7 @@ build/
 
 ### VS Code ###
 .vscode/
-/src/main/resources/application.yaml
+
+### OS ###
+.DS_Store
+Thumbs.db
