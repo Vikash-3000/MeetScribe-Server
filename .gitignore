@@ -4,7 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### Environment / Secrets ###
-../.env
+/.env
 application-*.yml
 application-*.yaml
 !application.yml.example
