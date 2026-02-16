@@ -4,44 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="changed to .env file">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="gitignore changed">
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/GatewaySecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/JwtDecoderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/AppApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/common/response/ApiError.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/common/response/ApiResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/core/domain/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/core/exception/DomainException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/core/port/UserRepositoryPort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/core/usecase/CreateUserUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/data/adapter/UserRepositoryAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/data/entity/UserEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/data/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/data/repository/UserJpaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/auth/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/auth/dto/LoginRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/auth/dto/LoginResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/auth/service/AuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/auth/service/OAuthUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/user/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/user/dto/CreateUserRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/user/dto/UserResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/feature/user/service/UserApplicationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/persistence/JpaConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/SecurityBeans.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/security/oauth/CustomOAuth2SuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meetscribe/app/infrastructure/validation/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-example.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/meetscribe/app/AppApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,18 +63,27 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.AppApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppApplication.executor&quot;: &quot;Debug&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SpringBoot/MeetScribe&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SpringBoot/MeetScribe/meetscribe-gateway&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/SpringBoot/MeetScribe/meetscribe-gateway/src/Main.java&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway" />
+      <recent name="D:\SpringBoot\MeetScribe" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway\config" />
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.meetscribe.gateway" />
     </key>
@@ -155,13 +138,74 @@
       <option name="project" value="LOCAL" />
       <updated>1769937938582</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="file path changed">
+      <option name="closed" value="true" />
+      <created>1769942271444</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1769942271444</updated>
+    </task>
+    <task id="LOCAL-00006" summary="file path changed">
+      <option name="closed" value="true" />
+      <created>1769942729730</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769942729730</updated>
+    </task>
+    <task id="LOCAL-00007" summary="file path changed">
+      <option name="closed" value="true" />
+      <created>1769943443988</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769943443988</updated>
+    </task>
+    <task id="LOCAL-00008" summary="file path changed">
+      <option name="closed" value="true" />
+      <created>1769943456025</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1769943456025</updated>
+    </task>
+    <task id="LOCAL-00009" summary="file path changed">
+      <option name="closed" value="true" />
+      <created>1769943534369</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1769943534369</updated>
+    </task>
+    <task id="LOCAL-00010" summary="gitignore changed">
+      <option name="closed" value="true" />
+      <created>1769943773143</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1769943773143</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="application.yml file ignored" />
     <MESSAGE value="changed to .env file" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed to .env file" />
+    <MESSAGE value="file path changed" />
+    <MESSAGE value="gitignore changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore changed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/meetscribe-gateway/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
