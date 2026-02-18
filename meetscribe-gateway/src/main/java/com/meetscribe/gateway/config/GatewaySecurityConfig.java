@@ -12,14 +12,27 @@ public class GatewaySecurityConfig {
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        http
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .authorizeExchange(ex -> ex
-                        .pathMatchers("/actuator/**").permitAll()
-                        .anyExchange().authenticated()
-                )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt());
 
-        return http.build();
+        return http
+                // Gateways are stateless
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+
+                // Gateway does NOT authenticate users
+                .authorizeExchange(ex -> ex
+                        // Infra
+                        .pathMatchers("/actuator/**").permitAll()
+
+                        // Public entry APIs
+                        .pathMatchers(
+                                "/api/auth/**",   // login
+                                "/api/users"      // signup (POST)
+                        ).permitAll()
+
+                        // Everything else passes through gateway
+                        .anyExchange().permitAll()
+                )
+
+                // ❌ NO oauth2ResourceServer() here
+                .build();
     }
 }

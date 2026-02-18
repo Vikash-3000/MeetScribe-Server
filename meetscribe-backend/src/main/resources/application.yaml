@@ -32,3 +32,16 @@ security:
   jwt:
     secret: ${JWT_SECRET}
     expiry: 3600000
+
+
+# 🔑 REQUIRED FOR DOCKER HEALTHCHECK
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true

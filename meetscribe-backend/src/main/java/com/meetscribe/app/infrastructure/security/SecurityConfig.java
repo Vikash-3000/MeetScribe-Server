@@ -1,10 +1,12 @@
 package com.meetscribe.app.infrastructure.security;
 
+import com.meetscribe.app.infrastructure.security.gateway.GatewayOnlyFilter;
 import com.meetscribe.app.infrastructure.security.jwt.JwtAuthenticationEntryPoint;
 import com.meetscribe.app.infrastructure.security.jwt.JwtAuthenticationFilter;
 import com.meetscribe.app.infrastructure.security.oauth.CustomOAuth2SuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -19,15 +21,18 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtFilter;
     private final JwtAuthenticationEntryPoint entryPoint;
     private final CustomOAuth2SuccessHandler oAuth2SuccessHandler;
+    private final GatewayOnlyFilter gatewayOnlyFilter;
 
     public SecurityConfig(
             JwtAuthenticationFilter jwtFilter,
             JwtAuthenticationEntryPoint entryPoint,
-            CustomOAuth2SuccessHandler oAuth2SuccessHandler
+            CustomOAuth2SuccessHandler oAuth2SuccessHandler,
+            GatewayOnlyFilter gatewayOnlyFilter
     ) {
         this.jwtFilter = jwtFilter;
         this.entryPoint = entryPoint;
         this.oAuth2SuccessHandler = oAuth2SuccessHandler;
+        this.gatewayOnlyFilter = gatewayOnlyFilter;
     }
 
     @Bean
@@ -47,13 +52,24 @@ public class SecurityConfig {
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
+                        // ✅ PUBLIC: SIGNUP (MUST COME FIRST)
+                        .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+
+                        // ✅ PUBLIC: LOGIN
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+
+                        // ✅ PUBLIC: OAuth + Health
                         .requestMatchers(
-                                "/api/users",
-                                "/api/auth/login",
                                 "/oauth2/**",
-                                "/login/**"
+                                "/login/**",
+                                "/actuator/health",
+                                "/actuator/health/**"
                         ).permitAll()
+
+                        // 🔒 PROTECTED: EVERYTHING ELSE UNDER /api/users
                         .requestMatchers("/api/users/**").authenticated()
+
+                        // 🔒 FALLBACK
                         .anyRequest().authenticated()
                 )
 
@@ -62,6 +78,12 @@ public class SecurityConfig {
                         oauth.successHandler(oAuth2SuccessHandler)
                 )
 
+                // 🔐 Gateway-only enforcement
+                .addFilterBefore(
+                        gatewayOnlyFilter,
+                        UsernamePasswordAuthenticationFilter.class
+                )
+                // 🔐 JWT authentication
                 .addFilterBefore(
                         jwtFilter,
                         UsernamePasswordAuthenticationFilter.class

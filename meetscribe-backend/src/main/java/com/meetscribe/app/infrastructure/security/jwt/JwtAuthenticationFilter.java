@@ -15,13 +15,32 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class JwtAuthenticationFilter
-        extends OncePerRequestFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
 
     public JwtAuthenticationFilter(JwtProvider jwtProvider) {
         this.jwtProvider = jwtProvider;
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        String method = request.getMethod();
+
+        return
+                // signup
+                (path.equals("/api/users") && method.equals("POST"))
+
+                        // login
+                        || path.equals("/api/auth/login")
+
+                        // oauth
+                        || path.startsWith("/oauth2")
+                        || path.startsWith("/login")
+
+                        // infra
+                        || path.startsWith("/actuator");
     }
 
     @Override
@@ -37,8 +56,7 @@ public class JwtAuthenticationFilter
             String token = header.substring(7);
 
             try {
-                Claims claims =
-                        jwtProvider.validate(token).getBody();
+                Claims claims = jwtProvider.validate(token).getBody();
 
                 Authentication auth =
                         new UsernamePasswordAuthenticationToken(
@@ -47,8 +65,7 @@ public class JwtAuthenticationFilter
                                 List.of()
                         );
 
-                SecurityContextHolder
-                        .getContext()
+                SecurityContextHolder.getContext()
                         .setAuthentication(auth);
 
             } catch (Exception ex) {
