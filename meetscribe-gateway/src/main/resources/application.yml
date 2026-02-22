@@ -11,19 +11,9 @@ spring:
         - RemoveRequestHeader=Cookie
         - AddResponseHeader=X-Gateway, MeetScribe
 
-      routes:
-        - id: backend-service
-          uri: http://meetscribe-backend:8081
-          predicates:
-            - Path=/api/**
-          filters:
-            - StripPrefix=1
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          secret-key: ${JWT_SECRET}
+      httpclient:
+        connect-timeout: 5000
+        response-timeout: 10s
 
   data:
     redis:
@@ -35,3 +25,7 @@ management:
     web:
       exposure:
         include: health,info
+
+services:
+  backend:
+    uri: http://meetscribe-backend:8081

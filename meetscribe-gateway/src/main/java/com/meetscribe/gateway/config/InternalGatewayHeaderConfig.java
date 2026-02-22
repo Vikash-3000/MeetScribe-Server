@@ -10,6 +10,14 @@ public class InternalGatewayHeaderConfig {
     public static final String INTERNAL_HEADER = "X-Internal-Gateway";
     public static final String INTERNAL_VALUE = "meetscribe-gateway";
 
+    // ===============================
+    // GLOBAL FILTERS
+    // ===============================
+
+    /**
+     * Adds an internal trust header so backend can verify
+     * that traffic ONLY comes from API Gateway.
+     */
     @Bean
     public GlobalFilter internalGatewayHeaderFilter() {
         return (exchange, chain) -> {

@@ -53,10 +53,10 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         // ✅ PUBLIC: SIGNUP (MUST COME FIRST)
-                        .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
 
                         // ✅ PUBLIC: LOGIN
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 
                         // ✅ PUBLIC: OAuth + Health
                         .requestMatchers(
@@ -67,7 +67,7 @@ public class SecurityConfig {
                         ).permitAll()
 
                         // 🔒 PROTECTED: EVERYTHING ELSE UNDER /api/users
-                        .requestMatchers("/api/users/**").authenticated()
+                        .requestMatchers("/users/**").authenticated()
 
                         // 🔒 FALLBACK
                         .anyRequest().authenticated()

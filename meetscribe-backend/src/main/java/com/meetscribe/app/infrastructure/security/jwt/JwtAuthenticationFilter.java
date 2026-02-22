@@ -30,10 +30,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         return
                 // signup
-                (path.equals("/api/users") && method.equals("POST"))
+                (path.equals("/users") && method.equals("POST"))
 
                         // login
-                        || path.equals("/api/auth/login")
+                        || path.equals("/auth/login")
 
                         // oauth
                         || path.startsWith("/oauth2")
@@ -49,6 +49,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain chain
     ) throws IOException, ServletException {
+
+        // Already authenticated
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            chain.doFilter(request, response);
+            return;
+        }
 
         String header = request.getHeader("Authorization");
 

@@ -1,5 +1,6 @@
 package com.meetscribe.gateway.routes;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
@@ -7,10 +8,14 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import reactor.core.publisher.Mono;
 
 @Configuration
 public class GatewayRoutes {
+
+    @Value("${services.backend.uri}")
+    private String backendUri;
 
     // ===============================
     // ROUTES
@@ -22,46 +27,49 @@ public class GatewayRoutes {
                 // ===============================
                 // BACKEND SERVICE ROUTE
                 // ===============================
-                .route("meetscribe-backend", r -> r
-                        .path("/api/**")
+                // LOGIN – strict
+                .route("auth-login", r -> r
+                        .path("/api/auth/login")
                         .filters(f -> f
-                                // Remove "/api" before forwarding
                                 .stripPrefix(1)
-
-                                // Rate limiting (Redis-backed)
-                                .requestRateLimiter(config -> {
-                                    config.setRateLimiter(redisRateLimiter());
-                                    config.setKeyResolver(keyResolver());
+                                .requestRateLimiter(c -> {
+                                    c.setRateLimiter(loginRateLimiter());
+                                    c.setKeyResolver(keyResolver());
                                 })
                         )
-                        .uri("http://meetscribe-backend:8081")
+                        .uri(backendUri)
+                )
+
+                // SIGNUP – very strict
+                .route("user-signup", r -> r
+                        .path("/api/users")
+                        .and()
+                        .method("POST")
+                        .filters(f -> f
+                                .stripPrefix(1)
+                                .requestRateLimiter(c -> {
+                                    c.setRateLimiter(signupRateLimiter());
+                                    c.setKeyResolver(keyResolver());
+                                })
+                        )
+                        .uri(backendUri)
+                )
+
+                // ALL OTHER APIs
+                .route("backend-default", r -> r
+                        .path("/api/**")
+                        .filters(f -> f
+                                .stripPrefix(1)
+                                .requestRateLimiter(c -> {
+                                    c.setRateLimiter(defaultRateLimiter());
+                                    c.setKeyResolver(keyResolver());
+                                })
+                        )
+                        .uri(backendUri)
                 )
 
                 .build();
     }
-
-    // ===============================
-    // GLOBAL FILTERS
-    // ===============================
-
-    /**
-     * Adds an internal trust header so backend can verify
-     * that traffic ONLY comes from API Gateway.
-     */
-    @Bean
-    public GlobalFilter internalGatewayHeaderFilter() {
-        return (exchange, chain) -> {
-            var mutatedRequest = exchange.getRequest()
-                    .mutate()
-                    .header("X-Internal-Gateway", "meetscribe-gateway")
-                    .build();
-
-            return chain.filter(
-                    exchange.mutate().request(mutatedRequest).build()
-            );
-        };
-    }
-
     // ===============================
     // RATE LIMITING
     // ===============================
@@ -73,7 +81,18 @@ public class GatewayRoutes {
      * burstCapacity = 20 requests
      */
     @Bean
-    public RedisRateLimiter redisRateLimiter() {
+    public RedisRateLimiter loginRateLimiter() {
+        return new RedisRateLimiter(2, 5);
+    }
+
+    @Bean
+    public RedisRateLimiter signupRateLimiter() {
+        return new RedisRateLimiter(1, 3);
+    }
+
+    @Bean
+    @Primary
+    public RedisRateLimiter defaultRateLimiter() {
         return new RedisRateLimiter(10, 20);
     }
 
@@ -89,8 +108,16 @@ public class GatewayRoutes {
                     exchange.getRequest().getHeaders().getFirst("Authorization");
 
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                // Use token (or userId extracted from token later)
                 return Mono.just(authHeader.substring(7));
+            }
+
+            if (exchange.getRequest().getRemoteAddress() != null) {
+                return Mono.just(
+                        exchange.getRequest()
+                                .getRemoteAddress()
+                                .getAddress()
+                                .getHostAddress()
+                );
             }
 
             return Mono.just("anonymous");
