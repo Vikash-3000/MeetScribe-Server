@@ -5,6 +5,8 @@ import com.meetscribe.app.feature.auth.service.OAuthUserService;
 import com.meetscribe.app.infrastructure.security.jwt.JwtProvider;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -54,8 +56,18 @@ public class CustomOAuth2SuccessHandler
                         user.getEmail()
                 );
 
-        response.sendRedirect(
-                "http://localhost:8080/oauth-success?token=" + token
-        );
+        // ✅ Create secure HttpOnly cookie
+        ResponseCookie cookie = ResponseCookie.from("ACCESS_TOKEN", token)
+                .httpOnly(true)
+                .secure(false) // 🔥 change to true in HTTPS (production)
+                .path("/")
+                .maxAge(60 * 60) // 1 hour
+                .sameSite("Lax")
+                .build();
+
+        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+
+        // ✅ Redirect without exposing token
+        response.sendRedirect("http://localhost:8080/oauth-success");
     }
 }

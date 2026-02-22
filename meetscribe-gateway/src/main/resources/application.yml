@@ -7,9 +7,17 @@ spring:
 
   cloud:
     gateway:
-      default-filters:
-        - RemoveRequestHeader=Cookie
-        - AddResponseHeader=X-Gateway, MeetScribe
+      forwarded:
+        enabled: true
+
+      routes:
+        - id: auth-oauth
+          uri: http://meetscribe-backend:8081
+          predicates:
+            - Path=/oauth2/**,/login/oauth2/**
+          filters:
+            - PreserveHostHeader
+            - AddResponseHeader=X-Gateway, MeetScribe
 
       httpclient:
         connect-timeout: 5000
