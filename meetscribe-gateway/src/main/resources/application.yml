@@ -11,10 +11,20 @@ spring:
         enabled: true
 
       routes:
+        # 🔐 OAuth routes
         - id: auth-oauth
           uri: http://meetscribe-backend:8081
           predicates:
             - Path=/oauth2/**,/login/oauth2/**
+          filters:
+            - PreserveHostHeader
+            - AddResponseHeader=X-Gateway, MeetScribe
+
+        # ✅ BACKEND API ROUTES (ADD THIS)
+        - id: backend-api
+          uri: http://meetscribe-backend:8081
+          predicates:
+            - Path=/test/**,/users/**,/api/**
           filters:
             - PreserveHostHeader
             - AddResponseHeader=X-Gateway, MeetScribe
@@ -37,3 +47,8 @@ management:
 services:
   backend:
     uri: http://meetscribe-backend:8081
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiry: 3600000
