@@ -10,14 +10,16 @@ public class UserMapper {
     public static User toDomain(UserEntity entity) {
         return new User(
                 entity.getId(),
-                entity.getEmail()
+                entity.getEmail(),
+                entity.getDeviceId()
         );
     }
 
     public static UserEntity toEntity(
             String email,
-            String passwordHash
+            String passwordHash,
+            String deviceId
     ) {
-        return new UserEntity(email, passwordHash);
+        return new UserEntity(email, passwordHash, deviceId);
     }
 }

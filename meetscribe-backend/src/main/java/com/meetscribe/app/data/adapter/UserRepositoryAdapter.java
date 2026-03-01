@@ -23,8 +23,9 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
 
     @Override
     public User save(String email, String passwordHash) {
+
         UserEntity entity =
-                UserMapper.toEntity(email, passwordHash);
+                UserMapper.toEntity(email, passwordHash, null);
 
         return UserMapper.toDomain(
                 jpaRepository.save(entity)

@@ -29,11 +29,6 @@ spring:
               - email
               - profile
 
-security:
-  jwt:
-    secret: ${JWT_SECRET}
-    expiry: 3600000
-
 
 # 🔑 REQUIRED FOR DOCKER HEALTHCHECK
 management:
@@ -46,3 +41,7 @@ management:
       show-details: always
       probes:
         enabled: true
+
+security:
+  refresh:
+    secret: ${REFRESH_SECRET}

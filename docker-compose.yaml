@@ -7,10 +7,9 @@ services:
     env_file:
       - .env
     ports:
-      - "8080:8080"          # ✅ ONLY PUBLIC ENTRY
+      - "8080:8080"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     restart: unless-stopped
 
   backend:
@@ -20,10 +19,8 @@ services:
     env_file:
       - .env
     depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - postgres
+      - redis
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
@@ -31,7 +28,7 @@ services:
       timeout: 5s
       retries: 5
     expose:
-      - "8081"              # ✅ INTERNAL ONLY (Docker network)
+      - "8081"
 
   postgres:
     image: postgres:16
@@ -44,7 +41,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"   # DEV ONLY       # ✅ INTERNAL ONLY
+      - "5432:5432"   # only for local dev
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -56,7 +53,7 @@ services:
     container_name: meetscribe-redis
     restart: unless-stopped
     expose:
-      - "6379"              # ✅ INTERNAL ONLY
+      - "6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s

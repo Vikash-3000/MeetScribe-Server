@@ -3,6 +3,7 @@ package com.meetscribe.app.feature.auth.controller;
 import com.meetscribe.app.common.response.ApiResponse;
 import com.meetscribe.app.feature.auth.dto.LoginRequest;
 import com.meetscribe.app.feature.auth.dto.LoginResponse;
+import com.meetscribe.app.feature.auth.dto.RefreshRequest;
 import com.meetscribe.app.feature.auth.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +22,25 @@ public class AuthController {
     public ApiResponse<LoginResponse> login(
             @Valid @RequestBody LoginRequest request
     ) {
-        String token = authService.login(
+        LoginResponse response = authService.login(
                 request.email(),
-                request.password()
+                request.password(),
+                request.deviceId()
         );
 
         return ApiResponse.success(
-                new LoginResponse(
-                        token,
-                        null,
-                        request.email()
-                )
+               response
         );
+    }
+
+    @PostMapping("/refresh")
+    public ApiResponse<LoginResponse> refresh(
+            @RequestBody RefreshRequest request
+    ) {
+
+        LoginResponse response =
+                authService.refresh(request.refreshToken());
+
+        return ApiResponse.success(response);
     }
 }

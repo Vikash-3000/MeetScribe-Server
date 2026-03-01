@@ -1,7 +1,6 @@
 package com.meetscribe.gateway.infrastructure.security;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpCookie;
+import io.jsonwebtoken.Claims;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -14,11 +13,8 @@ public class JwtAuthFilter implements GlobalFilter {
 
     private final JwtValidator jwtValidator;
 
-    // ✅ Constructor injection (CORRECT)
-    public JwtAuthFilter(
-            @Value("${security.jwt.secret}") String secret
-    ) {
-        this.jwtValidator = new JwtValidator(secret);
+    public JwtAuthFilter() {
+        this.jwtValidator = new JwtValidator();
     }
 
     @Override
@@ -29,26 +25,26 @@ public class JwtAuthFilter implements GlobalFilter {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        // 🔓 Public endpoints
         if (isPublicPath(path)) {
             return chain.filter(exchange);
         }
 
-        HttpCookie cookie = exchange.getRequest()
-                .getCookies()
-                .getFirst("ACCESS_TOKEN");
+        String authHeader =
+                exchange.getRequest()
+                        .getHeaders()
+                        .getFirst("Authorization");
 
-        if (cookie == null) {
-            exchange.getResponse()
-                    .setStatusCode(HttpStatus.UNAUTHORIZED);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
 
-        String token = cookie.getValue();
+        String token = authHeader.substring(7);
 
-        if (jwtValidator.validate(token) == null) {
-            exchange.getResponse()
-                    .setStatusCode(HttpStatus.UNAUTHORIZED);
+        Claims claims = jwtValidator.validate(token);
+
+        if (claims == null) {
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
 
@@ -56,9 +52,10 @@ public class JwtAuthFilter implements GlobalFilter {
     }
 
     private boolean isPublicPath(String path) {
-        return path.startsWith("/oauth2")
-                || path.startsWith("/login")
-                || path.startsWith("/oauth-success")
+        return path.startsWith("/api/auth/login")
+                || path.startsWith("/api/users")
+                || path.startsWith("/oauth2")
+                || path.startsWith("/login/oauth2")
                 || path.startsWith("/actuator");
     }
 }

@@ -1,11 +1,12 @@
 package com.meetscribe.app.infrastructure.security;
 
-import com.meetscribe.app.infrastructure.security.gateway.GatewayOnlyFilter;
+import com.meetscribe.app.data.repository.UserJpaRepository;
 import com.meetscribe.app.infrastructure.security.jwt.JwtAuthenticationEntryPoint;
+import com.meetscribe.app.infrastructure.security.jwt.JwtAuthenticationFilter;
+import com.meetscribe.app.infrastructure.security.jwt.JwtProvider;
 import com.meetscribe.app.infrastructure.security.oauth.CustomOAuth2SuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -18,17 +19,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final CustomOAuth2SuccessHandler oAuth2SuccessHandler;
-    private final GatewayOnlyFilter gatewayOnlyFilter;
     private final JwtAuthenticationEntryPoint entryPoint;
+    private final JwtProvider jwtProvider;
+    private final UserJpaRepository userRepository;
 
     public SecurityConfig(
             CustomOAuth2SuccessHandler oAuth2SuccessHandler,
-            GatewayOnlyFilter gatewayOnlyFilter,
-            JwtAuthenticationEntryPoint entryPoint
+            JwtAuthenticationEntryPoint entryPoint,
+            JwtProvider jwtProvider,
+            UserJpaRepository userRepository
     ) {
         this.oAuth2SuccessHandler = oAuth2SuccessHandler;
-        this.gatewayOnlyFilter = gatewayOnlyFilter;
         this.entryPoint = entryPoint;
+        this.jwtProvider = jwtProvider;
+        this.userRepository = userRepository;
     }
 
     @Bean
@@ -44,29 +48,37 @@ public class SecurityConfig {
                         ex.authenticationEntryPoint(entryPoint)
                 )
 
-                // ✅ OAuth needs session
                 .sessionManagement(sm ->
                         sm.sessionCreationPolicy(
-                                SessionCreationPolicy.IF_REQUIRED
+                                SessionCreationPolicy.STATELESS
                         )
                 )
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/oauth2/**",
-                                "/login/**",
-                                "/actuator/health/**"
+                                "/login/oauth2/**",
+                                "/actuator/**",
+                                "/auth/login",
+                                "/auth/refresh",
+                                "/users"
                         ).permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
 
                 .oauth2Login(oauth ->
                         oauth.successHandler(oAuth2SuccessHandler)
                 )
 
-                // 🔐 Only gateway can access backend
+                // 1️⃣ Validate request came from gateway
                 .addFilterBefore(
-                        gatewayOnlyFilter,
+                        new InternalGatewayValidationFilter(),
+                        UsernamePasswordAuthenticationFilter.class
+                )
+
+                // 2️⃣ Then validate JWT
+                .addFilterBefore(
+                        new JwtAuthenticationFilter(jwtProvider, userRepository),
                         UsernamePasswordAuthenticationFilter.class
                 );
 

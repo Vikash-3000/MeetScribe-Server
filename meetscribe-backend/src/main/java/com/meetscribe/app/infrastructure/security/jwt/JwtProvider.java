@@ -3,42 +3,83 @@ package com.meetscribe.app.infrastructure.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 import java.util.Date;
 
 @Component
 public class JwtProvider {
 
-    @Value("${security.jwt.secret}")
-    private String secret;
+    private final PrivateKey privateKey;
+    private final PublicKey publicKey;
+    private final long expiryMillis = 3600000;
 
-    @Value("${security.jwt.expiry}")
-    private long expiryMillis;
+    public JwtProvider() throws Exception {
+        this.privateKey = loadPrivateKey();
+        this.publicKey = loadPublicKey();
+    }
 
-    public String generateToken(Long userId, String email) {
+    private PrivateKey loadPrivateKey() throws Exception {
+        InputStream is =
+                new ClassPathResource("private.pem").getInputStream();
+
+        String key = new String(is.readAllBytes())
+                .replaceAll("-----\\w+ PRIVATE KEY-----", "")
+                .replaceAll("\\s", "");
+
+        byte[] decoded = Base64.getDecoder().decode(key);
+
+        return KeyFactory.getInstance("RSA")
+                .generatePrivate(new PKCS8EncodedKeySpec(decoded));
+    }
+
+    private PublicKey loadPublicKey() throws Exception {
+        InputStream is =
+                new ClassPathResource("public.pem").getInputStream();
+
+        String key = new String(is.readAllBytes())
+                .replaceAll("-----\\w+ PUBLIC KEY-----", "")
+                .replaceAll("\\s", "");
+
+        byte[] decoded = Base64.getDecoder().decode(key);
+
+        return KeyFactory.getInstance("RSA")
+                .generatePublic(new X509EncodedKeySpec(decoded));
+    }
+
+    public String generateToken(Long userId,
+                                String email,
+                                String deviceId,
+                                Integer tokenVersion) {
+
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expiryMillis);
 
         return Jwts.builder()
-                .setSubject(String.valueOf(userId))
+                .subject(String.valueOf(userId))
                 .claim("email", email)
-                .setIssuedAt(now)
-                .setExpiration(expiry)
-                .signWith(
-                        Keys.hmacShaKeyFor(secret.getBytes()),
-                        SignatureAlgorithm.HS256
-                )
+                .claim("deviceId", deviceId)
+                .claim("tokenVersion", tokenVersion)
+                .issuedAt(now)
+                .expiration(expiry)
+                .signWith(privateKey)
                 .compact();
     }
 
-    public Jws<Claims> validate(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(secret.getBytes())
+    public Claims validate(String token) {
+        Jws<Claims> claims = Jwts.parser()
+                .verifyWith(publicKey)
                 .build()
-                .parseClaimsJws(token);
+                .parseSignedClaims(token);
+
+        return claims.getPayload();
     }
 }

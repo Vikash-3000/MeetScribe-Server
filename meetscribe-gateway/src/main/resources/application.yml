@@ -10,6 +10,11 @@ spring:
       forwarded:
         enabled: true
 
+      default-filters:
+        - AddResponseHeader=X-Content-Type-Options,nosniff
+        - AddResponseHeader=X-Frame-Options,DENY
+        - AddResponseHeader=X-XSS-Protection,1; mode=block
+
       routes:
         # 🔐 OAuth routes
         - id: auth-oauth
@@ -24,7 +29,7 @@ spring:
         - id: backend-api
           uri: http://meetscribe-backend:8081
           predicates:
-            - Path=/test/**,/users/**,/api/**
+            - Path=/users/**,/api/**
           filters:
             - PreserveHostHeader
             - AddResponseHeader=X-Gateway, MeetScribe
@@ -47,8 +52,3 @@ management:
 services:
   backend:
     uri: http://meetscribe-backend:8081
-
-security:
-  jwt:
-    secret: ${JWT_SECRET}
-    expiry: 3600000

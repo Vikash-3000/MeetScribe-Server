@@ -4,20 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="gateway run">
-      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/gateway/GatewayOnlyFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/InternalGatewayHeaderConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/routes/GatewayRoutes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/entity/RefreshTokenEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/repository/RefreshTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/dto/RefreshRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/HashUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/InternalGatewayValidationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/App.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meetscribe-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/core/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/core/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/adapter/UserRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/adapter/UserRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/data/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/dto/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/dto/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/dto/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/service/OAuthUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/feature/auth/service/OAuthUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/persistence/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/persistence/JpaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityBeans.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/gateway/GatewayOnlyFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/jwt/JwtProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/oauth/CustomOAuth2SuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/java/com/meetscribe/app/infrastructure/security/oauth/CustomOAuth2SuccessHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meetscribe-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/GatewaySecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/GatewaySecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/JwtDecoderConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/JwtDecoderConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/config/JwtDecoderConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/infrastructure/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/infrastructure/security/JwtAuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/infrastructure/security/JwtValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/java/com/meetscribe/gateway/infrastructure/security/JwtValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +54,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sessionBasedAuth" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,20 +94,25 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/SpringBoot/MeetScribe/meetscribe-gateway",
+    "last_opened_file_path": "D:/SpringBoot/MeetScribe/meetscribe-backend/src/main/resources",
     "onboarding.tips.debug.path": "D:/SpringBoot/MeetScribe/meetscribe-gateway/src/Main.java",
-    "settings.editor.selected.configurable": "Errors"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\resources" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway" />
       <recent name="D:\SpringBoot\MeetScribe" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\resources" />
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\resources" />
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\java\com\meetscribe\app\infrastructure\security\jwt" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway\config" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway" />
     </key>

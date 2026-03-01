@@ -1,7 +1,8 @@
 package com.meetscribe.app.feature.auth.dto;
 
 public record LoginResponse(
-        String token,
+        String accessToken,
+        String refreshToken,
         Long userId,
         String email
 ) {}
