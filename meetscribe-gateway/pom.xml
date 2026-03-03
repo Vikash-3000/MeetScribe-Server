@@ -5,11 +5,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ✅ STABLE Spring Boot -->
+    <!-- 🔥 Latest Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.9</version>
+        <version>3.3.6</version>
     </parent>
 
     <groupId>com.meetscribe</groupId>
@@ -20,13 +20,13 @@
         <java.version>21</java.version>
     </properties>
 
-    <!-- ✅ MATCHING Spring Cloud -->
+    <!-- 🔥 Matching Spring Cloud -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2023.0.3</version>
+                <version>2023.0.4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -35,19 +35,19 @@
 
     <dependencies>
 
-        <!-- REQUIRED for Spring Cloud Gateway -->
+        <!-- Gateway -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!-- Security (reactive) -->
+        <!-- Reactive Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Redis (reactive) -->
+        <!-- Reactive Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
@@ -59,26 +59,22 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- JJWT API -->
+        <!-- Latest JJWT -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.12.6</version>
+            <version>0.12.7</version>
         </dependency>
-
-        <!-- JJWT Implementation -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>0.12.6</version>
+            <version>0.12.7</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Jackson Serializer/Deserializer -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>0.12.6</version>
+            <version>0.12.7</version>
             <scope>runtime</scope>
         </dependency>
 
