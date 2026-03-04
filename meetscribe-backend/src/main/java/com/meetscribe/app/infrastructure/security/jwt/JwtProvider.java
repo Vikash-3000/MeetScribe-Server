@@ -3,7 +3,7 @@ package com.meetscribe.app.infrastructure.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -22,17 +22,18 @@ public class JwtProvider {
     private final PublicKey publicKey;
     private final long expiryMillis = 3600000;
 
-    public JwtProvider() throws Exception {
-        this.privateKey = loadPrivateKey();
-        this.publicKey = loadPublicKey();
+    public JwtProvider(
+            @Value("${JWT_PRIVATE_KEY}") String privateKeyStr,
+            @Value("${JWT_PUBLIC_KEY}") String publicKeyStr
+    ) throws Exception {
+
+        this.privateKey = loadPrivateKey(privateKeyStr);
+        this.publicKey = loadPublicKey(publicKeyStr);
     }
 
-    private PrivateKey loadPrivateKey() throws Exception {
-        InputStream is =
-                new ClassPathResource("private.pem").getInputStream();
+    private PrivateKey loadPrivateKey(String key) throws Exception {
 
-        String key = new String(is.readAllBytes())
-                .replaceAll("-----\\w+ PRIVATE KEY-----", "")
+        key = key.replaceAll("-----\\w+ PRIVATE KEY-----", "")
                 .replaceAll("\\s", "");
 
         byte[] decoded = Base64.getDecoder().decode(key);
@@ -41,12 +42,9 @@ public class JwtProvider {
                 .generatePrivate(new PKCS8EncodedKeySpec(decoded));
     }
 
-    private PublicKey loadPublicKey() throws Exception {
-        InputStream is =
-                new ClassPathResource("public.pem").getInputStream();
+    private PublicKey loadPublicKey(String key) throws Exception {
 
-        String key = new String(is.readAllBytes())
-                .replaceAll("-----\\w+ PUBLIC KEY-----", "")
+        key = key.replaceAll("-----\\w+ PUBLIC KEY-----", "")
                 .replaceAll("\\s", "");
 
         byte[] decoded = Base64.getDecoder().decode(key);
