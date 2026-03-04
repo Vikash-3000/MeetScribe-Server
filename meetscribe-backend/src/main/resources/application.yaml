@@ -1,10 +1,11 @@
 server:
-  port: 8081
+  port: ${PORT:8081}
   forward-headers-strategy: framework
 
 spring:
   jackson:
     time-zone: UTC
+
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -29,8 +30,6 @@ spring:
               - email
               - profile
 
-
-# 🔑 REQUIRED FOR DOCKER HEALTHCHECK
 management:
   endpoints:
     web:
