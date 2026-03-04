@@ -20,7 +20,6 @@ public class JwtProvider {
 
     private final PrivateKey privateKey;
     private final PublicKey publicKey;
-    private final long expiryMillis = 3600000;
 
     public JwtProvider(
             @Value("${JWT_PRIVATE_KEY}") String privateKeyStr,
@@ -59,6 +58,7 @@ public class JwtProvider {
                                 Integer tokenVersion) {
 
         Date now = new Date();
+        long expiryMillis = 3600000;
         Date expiry = new Date(now.getTime() + expiryMillis);
 
         return Jwts.builder()
