@@ -16,28 +16,11 @@ spring:
         - AddResponseHeader=X-XSS-Protection,1; mode=block
 
       routes:
-        # 🔐 OAuth routes
-        - id: oauth-start
-          uri: ${BACKEND_URL}
-          predicates:
-            - Path=/oauth2/**
-          filters:
-            - PreserveHostHeader
-
-        - id: oauth-callback
-          uri: ${BACKEND_URL}
-          predicates:
-            - Path=/login/**
-          filters:
-            - PreserveHostHeader
-
-
-
         # ✅ BACKEND API ROUTES (ADD THIS)
         - id: backend-api
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/users/**,/api/**
+            - Path=/users/**,/api/**,/oauth2/**,/login/**
           filters:
             - PreserveHostHeader
             - AddResponseHeader=X-Gateway, MeetScribe
