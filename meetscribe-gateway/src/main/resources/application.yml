@@ -17,13 +17,21 @@ spring:
 
       routes:
         # 🔐 OAuth routes
-        - id: auth-oauth
+        - id: oauth-start
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/oauth2/**,/login/oauth2/**
+            - Path=/oauth2/**
           filters:
             - PreserveHostHeader
-            - AddResponseHeader=X-Gateway, MeetScribe
+
+        - id: oauth-callback
+          uri: ${BACKEND_URL}
+          predicates:
+            - Path=/login/**
+          filters:
+            - PreserveHostHeader
+
+
 
         # ✅ BACKEND API ROUTES (ADD THIS)
         - id: backend-api
