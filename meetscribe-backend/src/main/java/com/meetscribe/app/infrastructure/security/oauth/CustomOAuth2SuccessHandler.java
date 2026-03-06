@@ -4,8 +4,6 @@ import com.meetscribe.app.feature.auth.dto.LoginResponse;
 import com.meetscribe.app.feature.auth.service.OAuthUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -45,7 +43,7 @@ public class CustomOAuth2SuccessHandler
         String deviceId = request.getParameter("deviceId");
 
         if (deviceId == null || deviceId.isBlank()) {
-            deviceId = "unknown-device";
+            deviceId = "oauth-" + java.util.UUID.randomUUID();
         }
 
         // 🔐 Enforce device + refresh logic inside service

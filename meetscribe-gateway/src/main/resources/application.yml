@@ -20,7 +20,7 @@ spring:
         - id: auth-oauth
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/oauth2/**,/login/**
+            - Path=/oauth2/**,/login/oauth2/**
           filters:
             - PreserveHostHeader
             - AddResponseHeader=X-Gateway, MeetScribe

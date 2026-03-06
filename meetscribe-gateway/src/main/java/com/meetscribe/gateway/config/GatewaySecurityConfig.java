@@ -22,6 +22,12 @@ public class GatewaySecurityConfig {
                         // Infra
                         .pathMatchers("/actuator/**").permitAll()
 
+                        // OAuth routes must be public
+                        .pathMatchers(
+                                "/oauth2/**",
+                                "/login/oauth2/**"
+                        ).permitAll()
+
                         // Public entry APIs
                         .pathMatchers(
                                 "/api/auth/**",   // login
