@@ -17,13 +17,12 @@ spring:
 
       routes:
         # ✅ BACKEND API ROUTES (ADD THIS)
-        - id: backend-api
+        - id: backend
           uri: ${BACKEND_URL}
           predicates:
             - Path=/users/**,/api/**,/oauth2/**,/login/**
           filters:
             - PreserveHostHeader
-            - AddResponseHeader=X-Gateway, MeetScribe
 
       httpclient:
         connect-timeout: 5000
