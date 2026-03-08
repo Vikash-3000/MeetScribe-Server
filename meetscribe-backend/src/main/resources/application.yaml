@@ -45,3 +45,9 @@ management:
 security:
   refresh:
     secret: ${REFRESH_SECRET}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG

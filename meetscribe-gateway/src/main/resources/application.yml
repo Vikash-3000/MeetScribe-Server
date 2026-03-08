@@ -56,3 +56,9 @@ management:
 services:
   backend:
     uri: ${BACKEND_URL}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
