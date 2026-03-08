@@ -11,23 +11,23 @@ spring:
       forwarded:
         enabled: true
 
+      default-filters:
+        - PreserveHostHeader
+
       routes:
+
         # 🔐 OAuth routes
         - id: auth-oauth
           uri: https://meetscribe-server.onrender.com
           predicates:
             - Path=/oauth2/**,/login/oauth2/**
-          filters:
-            - PreserveHostHeader
-            - AddRequestHeader=X-Forwarded-Proto, https
 
-        # ✅ BACKEND API ROUTES (ADD THIS)
+        # ✅ Backend APIs
         - id: backend-api
           uri: ${BACKEND_URL}
           predicates:
             - Path=/users/**,/api/**
           filters:
-            - PreserveHostHeader
             - AddResponseHeader=X-Gateway, MeetScribe
 
       httpclient:
@@ -47,10 +47,6 @@ management:
     web:
       exposure:
         include: health,info
-
-services:
-  backend:
-    uri: ${BACKEND_URL}
 
 logging:
   level:
