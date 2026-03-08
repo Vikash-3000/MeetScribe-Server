@@ -16,18 +16,20 @@ spring:
         - AddResponseHeader=X-Frame-Options,DENY
         - AddResponseHeader=X-XSS-Protection,1; mode=block
 
-  routes:
-    - id: auth
-      uri: ${BACKEND_URL}
-      predicates:
-        - Path=/oauth2/**,/login/**
-      filters:
-        - TokenRelay
+      routes:
+        - id: auth
+          uri: ${BACKEND_URL}
+          predicates:
+            - Path=/oauth2/**,/login/**
+          filters:
+            - TokenRelay
 
-    - id: api
-      uri: ${BACKEND_URL}
-      predicates:
-        - Path=/api/**,/users/**
+        - id: api
+          uri: ${BACKEND_URL}
+          predicates:
+            - Path=/api/**,/users/**
+          filters:
+            - TokenRelay
 
       httpclient:
         connect-timeout: 5000
