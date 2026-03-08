@@ -24,7 +24,7 @@ spring:
             - Path=/oauth2/**,/login/oauth2/**
           filters:
             - PreserveHostHeader
-            - AddResponseHeader=X-Gateway, MeetScribe
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
 
         # ✅ BACKEND API ROUTES (ADD THIS)
         - id: backend-api

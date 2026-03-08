@@ -29,6 +29,7 @@ spring:
             scope:
               - email
               - profile
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
 
 management:
   endpoints:
