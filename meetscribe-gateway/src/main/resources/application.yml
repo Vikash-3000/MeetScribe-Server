@@ -8,9 +8,6 @@ spring:
 
   cloud:
     gateway:
-      forwarded:
-        enabled: true
-
       default-filters:
         - PreserveHostHeader
 
