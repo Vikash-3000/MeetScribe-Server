@@ -59,6 +59,5 @@ services:
 
 logging:
   level:
-    org.springframework.security: DEBUG
     org.springframework.cloud.gateway: DEBUG
-    reactor.netty.http.client: DEBUG
+    reactor.netty: DEBUG
