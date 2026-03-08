@@ -24,7 +24,7 @@ spring:
           filters:
             - TokenRelay
 
-        - id: api
+        - id: backend
           uri: ${BACKEND_URL}
           predicates:
             - Path=/api/**,/users/**
