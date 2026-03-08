@@ -1,12 +1,18 @@
 server:
   port: ${PORT:8081}
   forward-headers-strategy: framework
+
   servlet:
     session:
       cookie:
         secure: true
+        same-site: none
+        http-only: true
 
 spring:
+  application:
+    name: meetscribe-server
+
   jackson:
     time-zone: UTC
 
@@ -23,6 +29,18 @@ spring:
       hibernate:
         format_sql: true
 
+  # Redis session storage (important for OAuth redirects)
+  session:
+    store-type: redis
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+      ssl:
+        enabled: true
+
   security:
     oauth2:
       client:
@@ -30,16 +48,27 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
+
             scope:
               - email
               - profile
+
+            # Must point to gateway
             redirect-uri: "https://meetscribe-gateway.onrender.com/login/oauth2/code/google"
+
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info
+
   endpoint:
     health:
       show-details: always
@@ -52,5 +81,6 @@ security:
 
 logging:
   level:
+    root: INFO
     org.springframework.security: DEBUG
     org.springframework.web: DEBUG
