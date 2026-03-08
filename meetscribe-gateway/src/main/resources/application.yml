@@ -24,7 +24,7 @@ spring:
             - Path=/oauth2/**,/login/oauth2/**
           filters:
             - PreserveHostHeader
-            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - AddRequestHeader=X-Forwarded-Proto, https
 
         # ✅ BACKEND API ROUTES (ADD THIS)
         - id: backend-api
