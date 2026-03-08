@@ -23,7 +23,6 @@ spring:
             - Path=/api/**,/users/**,/login/**,/oauth2/**
           filters:
             - PreserveHostHeader
-            - TokenRelay
 
       httpclient:
         connect-timeout: 5000
