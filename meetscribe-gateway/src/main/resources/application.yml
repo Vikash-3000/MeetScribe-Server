@@ -20,7 +20,7 @@ spring:
         - id: backend
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/users/**,/api/**,/oauth2/**,/login/**
+            - Path=/users/**,/api/**
           filters:
             - PreserveHostHeader
 
