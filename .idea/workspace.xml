@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="refresh token added">
+    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="direct url">
+      <change afterPath="$PROJECT_DIR$/meetscribe-backend/.github/workflows/keep-alive.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/.github/workflows/keep-alive.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meetscribe-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,33 +61,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SpringBoot/MeetScribe/meetscribe-backend/src/main/resources&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/SpringBoot/MeetScribe/meetscribe-gateway/src/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppApplication.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/SpringBoot/MeetScribe/meetscribe-gateway",
+    "onboarding.tips.debug.path": "D:/SpringBoot/MeetScribe/meetscribe-gateway/src/Main.java",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\resources" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway" />
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\resources" />
       <recent name="D:\SpringBoot\MeetScribe" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\.github\workflows" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\resources" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\resources" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-backend\src\main\java\com\meetscribe\app\infrastructure\security\jwt" />
       <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway\config" />
-      <recent name="D:\SpringBoot\MeetScribe\meetscribe-gateway\src\main\java\com\meetscribe\gateway" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.meetscribe.gateway" />
@@ -207,7 +207,231 @@
       <option name="project" value="LOCAL" />
       <updated>1772523088400</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated and tested">
+      <option name="closed" value="true" />
+      <created>1772527456230</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1772527456230</updated>
+    </task>
+    <task id="LOCAL-00014" summary="made private">
+      <option name="closed" value="true" />
+      <created>1772551063180</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1772551063180</updated>
+    </task>
+    <task id="LOCAL-00015" summary="private network">
+      <option name="closed" value="true" />
+      <created>1772635664702</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1772635664702</updated>
+    </task>
+    <task id="LOCAL-00016" summary="jwtProvider">
+      <option name="closed" value="true" />
+      <created>1772641267582</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1772641267582</updated>
+    </task>
+    <task id="LOCAL-00017" summary="jwtProvider">
+      <option name="closed" value="true" />
+      <created>1772642101612</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772642101612</updated>
+    </task>
+    <task id="LOCAL-00018" summary="oauth check">
+      <option name="closed" value="true" />
+      <created>1772738770260</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1772738770260</updated>
+    </task>
+    <task id="LOCAL-00019" summary="oauth">
+      <option name="closed" value="true" />
+      <created>1772811682469</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1772811682469</updated>
+    </task>
+    <task id="LOCAL-00020" summary="oauth changed">
+      <option name="closed" value="true" />
+      <created>1772818951238</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1772818951238</updated>
+    </task>
+    <task id="LOCAL-00021" summary="oauth">
+      <option name="closed" value="true" />
+      <created>1772819981744</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1772819981744</updated>
+    </task>
+    <task id="LOCAL-00022" summary="oauth2">
+      <option name="closed" value="true" />
+      <created>1772820962885</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1772820962885</updated>
+    </task>
+    <task id="LOCAL-00023" summary="oauth2">
+      <option name="closed" value="true" />
+      <created>1772958988205</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1772958988205</updated>
+    </task>
+    <task id="LOCAL-00024" summary="gateway-oauth2">
+      <option name="closed" value="true" />
+      <created>1772961129368</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772961129368</updated>
+    </task>
+    <task id="LOCAL-00025" summary="relay remove">
+      <option name="closed" value="true" />
+      <created>1772963224247</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772963224247</updated>
+    </task>
+    <task id="LOCAL-00026" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772964036434</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772964036435</updated>
+    </task>
+    <task id="LOCAL-00027" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772964960795</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1772964960795</updated>
+    </task>
+    <task id="LOCAL-00028" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772965533530</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1772965533530</updated>
+    </task>
+    <task id="LOCAL-00029" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772966269073</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1772966269073</updated>
+    </task>
+    <task id="LOCAL-00030" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772966771996</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1772966771996</updated>
+    </task>
+    <task id="LOCAL-00031" summary="port changed">
+      <option name="closed" value="true" />
+      <created>1772967734937</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1772967734937</updated>
+    </task>
+    <task id="LOCAL-00032" summary="changed">
+      <option name="closed" value="true" />
+      <created>1772968271031</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1772968271031</updated>
+    </task>
+    <task id="LOCAL-00033" summary="changed">
+      <option name="closed" value="true" />
+      <created>1772972692363</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1772972692363</updated>
+    </task>
+    <task id="LOCAL-00034" summary="changed">
+      <option name="closed" value="true" />
+      <created>1772974095846</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1772974095847</updated>
+    </task>
+    <task id="LOCAL-00035" summary="changed">
+      <option name="closed" value="true" />
+      <created>1772974279682</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1772974279682</updated>
+    </task>
+    <task id="LOCAL-00036" summary="changed1">
+      <option name="closed" value="true" />
+      <created>1772975872751</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1772975872751</updated>
+    </task>
+    <task id="LOCAL-00037" summary="changed1">
+      <option name="closed" value="true" />
+      <created>1772977277840</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1772977277840</updated>
+    </task>
+    <task id="LOCAL-00038" summary="changed1">
+      <option name="closed" value="true" />
+      <created>1772978428047</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1772978428047</updated>
+    </task>
+    <task id="LOCAL-00039" summary="changed1">
+      <option name="closed" value="true" />
+      <created>1772979588021</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1772979588021</updated>
+    </task>
+    <task id="LOCAL-00040" summary="direct url">
+      <option name="closed" value="true" />
+      <created>1772982145485</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1772982145485</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -218,7 +442,21 @@
     <MESSAGE value="gitignore changed" />
     <MESSAGE value="gateway run" />
     <MESSAGE value="refresh token added" />
-    <option name="LAST_COMMIT_MESSAGE" value="refresh token added" />
+    <MESSAGE value="updated and tested" />
+    <MESSAGE value="made private" />
+    <MESSAGE value="private network" />
+    <MESSAGE value="jwtProvider" />
+    <MESSAGE value="oauth check" />
+    <MESSAGE value="oauth changed" />
+    <MESSAGE value="oauth" />
+    <MESSAGE value="oauth2" />
+    <MESSAGE value="gateway-oauth2" />
+    <MESSAGE value="relay remove" />
+    <MESSAGE value="port changed" />
+    <MESSAGE value="changed" />
+    <MESSAGE value="changed1" />
+    <MESSAGE value="direct url" />
+    <option name="LAST_COMMIT_MESSAGE" value="direct url" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
