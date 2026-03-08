@@ -13,3 +13,4 @@ jobs:
       - name: Call Render Health Endpoint
         run: |
           curl -I https://meetscribe-gateway.onrender.com/actuator/health
+          curl -I https://meetscribe-server.onrender.com/actuator/health
