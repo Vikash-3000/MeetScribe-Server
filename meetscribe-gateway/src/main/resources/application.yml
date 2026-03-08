@@ -24,6 +24,7 @@ spring:
             - Path=/oauth2/**,/login/oauth2/**
           filters:
             - PreserveHostHeader
+            - StripPrefix=0
             - AddRequestHeader=X-Forwarded-Proto, https
 
         # ✅ BACKEND API ROUTES (ADD THIS)
@@ -61,3 +62,4 @@ logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     reactor.netty: DEBUG
+    org.springframework.web: DEBUG
