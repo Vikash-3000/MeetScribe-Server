@@ -1,6 +1,10 @@
 server:
   port: ${PORT:8081}
   forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        secure: true
 
 spring:
   jackson:
@@ -29,7 +33,6 @@ spring:
             scope:
               - email
               - profile
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
 
 management:
   endpoints:
