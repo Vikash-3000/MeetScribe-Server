@@ -28,8 +28,6 @@ spring:
           uri: ${BACKEND_URL}
           predicates:
             - Path=/api/**,/users/**
-          filters:
-            - TokenRelay
 
       httpclient:
         connect-timeout: 5000
