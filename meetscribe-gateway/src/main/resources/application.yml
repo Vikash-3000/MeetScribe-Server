@@ -17,17 +17,23 @@ spring:
         - AddResponseHeader=X-XSS-Protection,1; mode=block
 
       routes:
-        - id: auth
+        # 🔐 OAuth routes
+        - id: auth-oauth
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/oauth2/**,/login/**
+            - Path=/oauth2/**,/login/oauth2/**
           filters:
-            - TokenRelay
+            - PreserveHostHeader
+            - AddResponseHeader=X-Gateway, MeetScribe
 
-        - id: backend
+        # ✅ BACKEND API ROUTES (ADD THIS)
+        - id: backend-api
           uri: ${BACKEND_URL}
           predicates:
-            - Path=/api/**,/users/**
+            - Path=/users/**,/api/**
+          filters:
+            - PreserveHostHeader
+            - AddResponseHeader=X-Gateway, MeetScribe
 
       httpclient:
         connect-timeout: 5000
