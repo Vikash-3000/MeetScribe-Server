@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="direct url">
-      <change afterPath="$PROJECT_DIR$/meetscribe-backend/.github/workflows/keep-alive.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meetscribe-gateway/.github/workflows/keep-alive.yml" afterDir="false" />
+    <list default="true" id="605f9018-1237-4632-8e12-0951c7944c4f" name="Changes" comment="3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-backend/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meetscribe-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/meetscribe-gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +110,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1768028889381</updated>
-    </task>
-    <task id="LOCAL-00001" summary="initial commit">
-      <option name="closed" value="true" />
-      <created>1768323859145</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1768323859145</updated>
     </task>
     <task id="LOCAL-00002" summary="application.yml file ignored">
       <option name="closed" value="true" />
@@ -431,13 +423,90 @@
       <option name="project" value="LOCAL" />
       <updated>1772982145485</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="alive">
+      <option name="closed" value="true" />
+      <created>1772989928379</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1772989928379</updated>
+    </task>
+    <task id="LOCAL-00042" summary="logs">
+      <option name="closed" value="true" />
+      <created>1772991200022</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1772991200022</updated>
+    </task>
+    <task id="LOCAL-00043" summary="oauth ready">
+      <option name="closed" value="true" />
+      <created>1772994994268</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1772994994268</updated>
+    </task>
+    <task id="LOCAL-00044" summary="oauth ready">
+      <option name="closed" value="true" />
+      <created>1772996522285</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1772996522285</updated>
+    </task>
+    <task id="LOCAL-00045" summary="delete keep-alive">
+      <option name="closed" value="true" />
+      <created>1772996963570</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1772996963570</updated>
+    </task>
+    <task id="LOCAL-00046" summary="delete keep-alive">
+      <option name="closed" value="true" />
+      <created>1772997720973</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1772997720973</updated>
+    </task>
+    <task id="LOCAL-00047" summary="delete keep-alive">
+      <option name="closed" value="true" />
+      <created>1772998196299</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1772998196299</updated>
+    </task>
+    <task id="LOCAL-00048" summary="123">
+      <option name="closed" value="true" />
+      <created>1773066131654</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1773066131654</updated>
+    </task>
+    <task id="LOCAL-00049" summary="2">
+      <option name="closed" value="true" />
+      <created>1773072105563</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1773072105563</updated>
+    </task>
+    <task id="LOCAL-00050" summary="3">
+      <option name="closed" value="true" />
+      <created>1773072615513</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1773072615516</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="application.yml file ignored" />
-    <MESSAGE value="changed to .env file" />
     <MESSAGE value="file path changed" />
     <MESSAGE value="gitignore changed" />
     <MESSAGE value="gateway run" />
@@ -456,7 +525,14 @@
     <MESSAGE value="changed" />
     <MESSAGE value="changed1" />
     <MESSAGE value="direct url" />
-    <option name="LAST_COMMIT_MESSAGE" value="direct url" />
+    <MESSAGE value="alive" />
+    <MESSAGE value="logs" />
+    <MESSAGE value="oauth ready" />
+    <MESSAGE value="delete keep-alive" />
+    <MESSAGE value="123" />
+    <MESSAGE value="2" />
+    <MESSAGE value="3" />
+    <option name="LAST_COMMIT_MESSAGE" value="3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

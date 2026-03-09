@@ -1,6 +1,7 @@
 server:
   port: ${PORT:8081}
   forward-headers-strategy: framework
+  shutdown: graceful
 
   servlet:
     session:
@@ -12,6 +13,9 @@ spring:
   application:
     name: meetscribe-server
 
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
   jackson:
     time-zone: UTC
 
@@ -19,18 +23,27 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      connection-timeout: 20000
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: false
     properties:
       hibernate:
         format_sql: true
 
-  # Redis session storage (important for OAuth redirects)
   session:
     store-type: redis
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
   data:
     redis:
@@ -47,20 +60,9 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
-
             scope:
               - email
               - profile
-
-            # Must point to gateway
-            redirect-uri: "https://meetscribe-gateway.onrender.com/login/oauth2/code/google"
-
-        provider:
-          google:
-            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-            user-name-attribute: sub
 
 management:
   endpoints:
@@ -81,5 +83,5 @@ security:
 logging:
   level:
     root: INFO
-    org.springframework.security: DEBUG
-    org.springframework.web: DEBUG
+    org.springframework.security: INFO
+    org.springframework.web: WARN
