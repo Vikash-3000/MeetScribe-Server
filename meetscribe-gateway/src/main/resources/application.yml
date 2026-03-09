@@ -1,13 +1,9 @@
 server:
   port: ${PORT:8080}
-  forward-headers-strategy: framework
 
 spring:
   application:
     name: meetscribe-gateway
-
-  codec:
-    max-in-memory-size: 2MB
 
   cloud:
     gateway:
@@ -18,29 +14,23 @@ spring:
         - AddResponseHeader=X-XSS-Protection,1; mode=block
 
       routes:
+        # 🔐 OAuth routes
         - id: auth-oauth
           uri: ${BACKEND_URL}
           predicates:
             - Path=/oauth2/**,/login/oauth2/**
 
+        # ✅ BACKEND API ROUTES (ADD THIS)
         - id: backend-api
           uri: ${BACKEND_URL}
           predicates:
             - Path=/users/**,/api/**
           filters:
             - AddResponseHeader=X-Gateway, MeetScribe
-            - name: Retry
-              args:
-                retries: 2
 
       httpclient:
         connect-timeout: 5000
-        response-timeout: 10000
-
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+        response-timeout: 10s
 
   data:
     redis:
@@ -56,16 +46,6 @@ management:
       exposure:
         include: health,info
 
-  endpoint:
-    health:
-      probes:
-        enabled: true
-
 services:
   backend:
     uri: ${BACKEND_URL}
-
-logging:
-  level:
-    org.springframework.cloud.gateway: INFO
-    reactor.netty: WARN
