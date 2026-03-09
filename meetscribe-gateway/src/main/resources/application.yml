@@ -13,13 +13,11 @@ spring:
 
       routes:
 
-        # 🔐 OAuth routes
         - id: auth-oauth
           uri: https://meetscribe-server.onrender.com
           predicates:
             - Path=/oauth2/**,/login/oauth2/**
 
-        # ✅ Backend APIs
         - id: backend-api
           uri: ${BACKEND_URL}
           predicates:
