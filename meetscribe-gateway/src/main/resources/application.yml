@@ -35,10 +35,12 @@ spring:
 
       httpclient:
         connect-timeout: 5000
-        response-timeout: 10s
-        pool:
-          max-connections: 200
-          acquire-timeout: 45s
+        response-timeout: 10000
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
   data:
     redis:
@@ -53,6 +55,7 @@ management:
     web:
       exposure:
         include: health,info
+
   endpoint:
     health:
       probes:
