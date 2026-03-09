@@ -23,6 +23,12 @@ public class GatewayRoutes {
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
 
+                // OAuth
+                .route("oauth", r -> r
+                        .path("/oauth2/**", "/login/oauth2/**")
+                        .uri(backendUri)
+                )
+
                 // ===============================
                 // BACKEND SERVICE ROUTE
                 // ===============================
