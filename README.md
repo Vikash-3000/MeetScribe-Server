@@ -41,7 +41,7 @@ Deployment
 
 ## System Architecture
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](architecture.png)
 
 ## API Endpoints
 
