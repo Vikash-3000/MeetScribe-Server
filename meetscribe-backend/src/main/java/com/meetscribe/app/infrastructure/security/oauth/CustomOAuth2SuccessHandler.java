@@ -64,5 +64,13 @@ public class CustomOAuth2SuccessHandler
                 loginResponse.userId(),
                 loginResponse.email()
         ));
+
+        String redirectUrl = String.format(
+                "meetscribe://auth?accessToken=%s&refreshToken=%s",
+                loginResponse.accessToken(),
+                loginResponse.refreshToken()
+        );
+
+        response.sendRedirect(redirectUrl);
     }
 }
